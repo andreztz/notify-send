@@ -1,5 +1,7 @@
 # notify-send
 
+![](header.png)
+
 ## Installation
 
 ```sh
