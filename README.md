@@ -12,7 +12,7 @@
 
 ```sh
     from notify import Notification
-    Notification('An enhanced Interactive Python.').notify()
+    Notification('An enhanced', 'Interactive Python.')
 ```
 
 ## Release History
