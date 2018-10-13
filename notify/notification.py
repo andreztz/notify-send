@@ -5,7 +5,6 @@ Usage:
     Notification('what you want said')
 """
 
-from abc import ABC, abstractmethod
 from sys import platform
 
 
@@ -25,15 +24,14 @@ elif platform == "win32":
     from .win32 import WindowsBalloonTip
 
 
-class NotificationBase(ABC):
+class NotificationBase:
     def __init__(self, title="", message=""):
         self.title = title
         self.message = message
-        self.notify()
 
-    @abstractmethod
     def notify(self):
-        pass
+        """ Echoes the message to the console """
+        print("Notification: {}\n{}".format(self.title, self.message))
 
 
 class NotificationAndroid(NotificationBase):
