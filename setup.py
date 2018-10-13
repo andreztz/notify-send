@@ -14,7 +14,7 @@ def required():
 
 setup(
     name="notify-send",
-    version="0.0.1",
+    version="0.0.2",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
