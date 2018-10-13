@@ -15,6 +15,14 @@
     Notification('An enhanced', 'Interactive Python.')
 ```
 
+## Development setup
+
+```sh
+    virtualenv venv
+    source venv/bin/activate
+    python setup.py develop
+```
+
 ## Release History
 
 -   0.0.1
