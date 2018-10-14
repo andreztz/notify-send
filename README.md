@@ -12,7 +12,7 @@
 
 ```python
     from notify import Notification
-    Notification('title', 'body message')
+    Notification('title', 'body message').notify()
 ```
 
 ## Development setup
@@ -25,7 +25,7 @@
 
 ## Release History
 
--   0.0.4 - The first proper release
+-   0.0.5 - The first proper release
     -   Work in progress
 
 ## Meta
