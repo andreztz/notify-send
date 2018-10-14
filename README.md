@@ -20,6 +20,7 @@
 ```sh
     virtualenv venv
     source venv/bin/activate
+    pip install PyGObject==3.30.1
     python setup.py develop
 ```
 
