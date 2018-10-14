@@ -1,7 +1,7 @@
 """
 Display a notification suitable for the platform being run on
 Usage:
-    from components.notification import Notification
+    from notify import Notification
     Notification('what you want said')
 """
 
@@ -24,18 +24,8 @@ elif platform == "win32":
     from .win32 import WindowsBalloonTip
 
 
-class NotificationBase:
-    def __init__(self, title="", message=""):
-        self.title = title
-        self.message = message
-
-    def notify(self):
-        """ Echoes the message to the console """
-        print("Notification: {}\n{}".format(self.title, self.message))
-
-
-class NotificationAndroid(NotificationBase):
-    def notify(self):
+class NotificationAndroid:
+    def __call__(self, title, message):
         """ Displays a native Android notification """
         AndroidString = autoclass("java.lang.String")
         PythonActivity = autoclass("org.renpy.android.PythonActivity")
@@ -44,8 +34,8 @@ class NotificationAndroid(NotificationBase):
         icon = Drawable.icon
         noti = NotificationBuilder(PythonActivity.mActivity)
         # noti.setDefaults(Notification.DEFAULT_ALL)
-        noti.setContentTitle(AndroidString(self.title.encode("utf-8")))
-        noti.setContentText(AndroidString(self.message.encode("utf-8")))
+        noti.setContentTitle(AndroidString(title.encode("utf-8")))
+        noti.setContentText(AndroidString(message.encode("utf-8")))
         noti.setSmallIcon(icon)
         noti.setAutoCancel(True)
         nm = PythonActivity.mActivity.getSystemService(
@@ -59,14 +49,14 @@ class NotificationAndroid(NotificationBase):
 # working-with-mountain-lions-notification-center-using-pyobjc
 
 
-class NotificationOsx(NotificationBase):
-    def notify(self):
+class NotificationOsx:
+    def __call__(self, title, message):
         NSUserNotification = objc.lookUpClass("NSUserNotification")
         NSUserNotificationCenter = objc.lookUpClass("NSUserNotificationCenter")
         notification = NSUserNotification.alloc().init()
-        notification.setTitle_(str(self.title))
+        notification.setTitle_(str(title))
         # notification.setSubtitle_(str(subtitle))
-        notification.setInformativeText_(self.message)
+        notification.setInformativeText_(message)
         notification.setSoundName_("NSUserNotificationDefaultSoundName")
         # notification.setHasActionButton_(False)
         # notification.setOtherButtonTitle_("View")
@@ -79,32 +69,29 @@ class NotificationOsx(NotificationBase):
         )
 
 
-class NotificationLinux(NotificationBase):
+class NotificationLinux:
     """ Displays a notification using the Gtk API """
 
-    def notify(self):
-        SendNotify(self.title, self.message)
+    def __call__(self, title, message):
+        SendNotify(title, message)
 
 
-class NotificationWindows(NotificationBase):
+class NotificationWindows:
     """ Displays a notification using the win32 API """
 
-    def notify(self):
-        balloon_tip = WindowsBalloonTip(self.title, self.message)
+    def __call__(self, title, message):
+        WindowsBalloonTip(title, message)
 
-
-# Default to console
-Notification = NotificationBase
 
 # Platform-specific searches
 if platform == "android":
-    Notification = NotificationAndroid
+    Notification = NotificationAndroid()
 
 if platform == "macosx":
-    Notification = NotificationOsx
+    Notification = NotificationOsx()
 
 elif platform == "linux":
-    Notification = NotificationLinux
+    Notification = NotificationLinux()
 
 elif platform == "win32":
-    Notification = NotificationWindows
+    Notification = NotificationWindows()
