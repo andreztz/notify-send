@@ -29,10 +29,6 @@ class NotificationBase:
         self.title = title
         self.message = message
 
-    def notify(self):
-        """ Echoes the message to the console """
-        print("Notification: {}\n{}".format(self.title, self.message))
-
 
 class NotificationAndroid(NotificationBase):
     def notify(self):
@@ -92,9 +88,6 @@ class NotificationWindows(NotificationBase):
     def notify(self):
         balloon_tip = WindowsBalloonTip(self.title, self.message)
 
-
-# Default to console
-Notification = NotificationBase
 
 # Platform-specific searches
 if platform == "android":
