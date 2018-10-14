@@ -1,1 +1,2 @@
 requests==2.19.1
+PyGObject==3.30.1
