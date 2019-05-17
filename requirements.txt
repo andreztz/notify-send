@@ -1,2 +1,1 @@
-requests==2.19.1
-PyGObject==3.30.1
+PyGObject==3.30.1; sys_platform == 'linux'
