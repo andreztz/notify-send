@@ -1,1 +1,2 @@
-PyGObject==3.30.1; sys_platform == 'linux'
+pycairo==1.18.1; sys_platform == 'linux'
+PyGObject==3.32.1; sys_platform == 'linux'
