@@ -1,3 +1,4 @@
-pywin32==224; sys_platform == 'windows'
+pypiwin32==223; sys_platform == 'win32'
+pywin32==224; sys_platform == 'win32'
 pycairo==1.18.1; sys_platform == 'linux'
 PyGObject==3.32.1; sys_platform == 'linux'
