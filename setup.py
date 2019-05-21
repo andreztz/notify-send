@@ -30,7 +30,7 @@ def required():
 
 setup(
     name="notify-send",
-    version="0.0.8",
+    version="0.0.9",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
