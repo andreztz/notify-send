@@ -9,7 +9,7 @@ class PostDevelopCommand(develop):
     def run(self):
         """
         Note: this class solves the installation problem
-        of pycair and pygobject in development mode.
+        of pycairo and pygobject in development mode.
         ModuleNotFoundError: No module named 'cairo'
         """
         print("*" * 80)
