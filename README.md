@@ -10,15 +10,22 @@
 
 ## Usage example
 
-```sh
+```python
     from notify import Notification
-    Notification('An enhanced Interactive Python.').notify()
+    Notification('title', 'body message')
+```
+
+## Development setup
+
+```sh
+    virtualenv venv
+    source venv/bin/activate
+    python setup.py develop
 ```
 
 ## Release History
 
--   0.0.1
-    -   The first proper release
+-   0.0.6 - The first proper release
     -   Work in progress
 
 ## Meta

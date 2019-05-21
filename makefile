@@ -1,7 +1,6 @@
-release: 
-	echo "em test"
-	# python setup.py sdist bdist_wheel
-	# twine upload --config-file ~/.pypirc dist/*
+release:
+	python setup.py sdist bdist_wheel
+	twine upload --config-file ~/.pypirc dist/*
 
 release-test:
 	python setup.py sdist bdist_wheel

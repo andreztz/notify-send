@@ -1,5 +1,21 @@
+import subprocess
+
 from setuptools import setup
 from setuptools import find_packages
+from setuptools.command.develop import develop
+
+
+class PostDevelopCommand(develop):
+    def run(self):
+        """
+        Note: this class solves the installation problem
+        of pycair and pygobject in development mode.
+        ModuleNotFoundError: No module named 'cairo'
+        """
+        print("*" * 80)
+        subprocess.call("pip install -r requirements.txt".split(" "))
+        print("*" * 80)
+        develop.run(self)
 
 
 def readme():
@@ -14,12 +30,12 @@ def required():
 
 setup(
     name="notify-send",
-    version="0.0.1",
+    version="0.0.8",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
     keywords="alert inform informer notify notify-send",
-    platforms=["Linux"],
+    platforms=["Linux", "Windows"],
     author="Andre P. Santos",
     author_email="andreztz@gmail.com",
     url="https://github.com/andreztz/notify-send",
@@ -31,4 +47,5 @@ setup(
         "Programming Language :: Python :: 3",
         "Intended Audience :: Developers",
     ],
+    cmdclass={"develop": PostDevelopCommand},
 )

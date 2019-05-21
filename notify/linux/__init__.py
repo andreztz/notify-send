@@ -1,3 +1,3 @@
-from .notify import SendNotify
+from .notify import NotificationLinux
 
-__all__ = ["SendNotify"]
+__all__ = ["NotificationLinux"]

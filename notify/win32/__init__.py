@@ -1,4 +1,3 @@
-from .balloontip import WindowsBalloonTip
+from .notify import NotificationWindows
 
-__all__ = ["WindowsBalloonTip"]
-
+__all__ = ["NotificationWindows"]
