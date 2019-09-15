@@ -19,8 +19,8 @@ else:
 class Notification:
     """ Displays a notification """
 
-    def __call__(self, message, **kwargs):
-        send(message, **kwargs)
+    def __call__(self, message, title="", app_name=None):
+        send(message, title, app_name)
 
 
 Notification = Notification()
