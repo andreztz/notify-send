@@ -2,7 +2,7 @@
 Display a notification suitable for the platform being run on
 Usage:
     from notify import Notification
-    Notification('what you want said')
+    Notification('what you want said', title=':)', app_name='app name')
 """
 import sys
 
