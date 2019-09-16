@@ -18,6 +18,8 @@
 ## Development setup
 
 ```sh
+    git clone https://github.com/andreztz/notify-send.git
+    cd notify-send
     virtualenv venv
     source venv/bin/activate
     pip install -e .
@@ -25,7 +27,7 @@
 
 ## Release History
 
--   0.0.11 - The first proper release
+-   0.0.12 - The first proper release
     -   Work in progress
 
 ## Meta
