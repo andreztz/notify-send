@@ -12,7 +12,7 @@
 
 ```python
     from notify import Notification
-    Notification('title', 'body message')
+    Notification('body message', title='optinal')
 ```
 
 ## Development setup
@@ -20,12 +20,12 @@
 ```sh
     virtualenv venv
     source venv/bin/activate
-    python setup.py develop
+    pip install -e .
 ```
 
 ## Release History
 
--   0.0.6 - The first proper release
+-   0.0.11 - The first proper release
     -   Work in progress
 
 ## Meta
