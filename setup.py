@@ -1,14 +1,6 @@
-# import subprocess
-
 from setuptools import setup
 from setuptools import find_packages
 from setuptools.command.develop import develop
-
-
-# class PostDevelopCommand(develop):
-#     def run(self):
-#         subprocess.call("pip install -r requirements.txt".split(" "))
-#         develop.run(self)
 
 
 def readme():
@@ -16,14 +8,9 @@ def readme():
         return f.read()
 
 
-def required():
-    with open("requirements.txt") as f:
-        return f.read().splitlines()
-
-
 setup(
     name="notify-send",
-    version="0.0.11",
+    version="0.0.12",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -34,11 +21,15 @@ setup(
     url="https://github.com/andreztz/notify-send",
     license="MIT",
     packages=find_packages(),
-    install_requires=required(),
+    install_requires=[
+        "pypiwin32==223; sys_platform == 'win32'",
+        "pywin32==224; sys_platform == 'win32'",
+        "pycairo==1.18.1; sys_platform == 'linux'",
+        "PyGObject==3.32.1; sys_platform == 'linux'",
+    ],
     classifiers=[
         "Development Status :: 1 - Planning",
         "Programming Language :: Python :: 3",
         "Intended Audience :: Developers",
     ],
-    # cmdclass={"develop": PostDevelopCommand},
 )
