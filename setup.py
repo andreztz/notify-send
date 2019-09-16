@@ -1,21 +1,14 @@
-import subprocess
+# import subprocess
 
 from setuptools import setup
 from setuptools import find_packages
 from setuptools.command.develop import develop
 
 
-class PostDevelopCommand(develop):
-    def run(self):
-        """
-        Note: this class solves the installation problem
-        of pycairo and pygobject in development mode.
-        ModuleNotFoundError: No module named 'cairo'
-        """
-        print("*" * 80)
-        subprocess.call("pip install -r requirements.txt".split(" "))
-        print("*" * 80)
-        develop.run(self)
+# class PostDevelopCommand(develop):
+#     def run(self):
+#         subprocess.call("pip install -r requirements.txt".split(" "))
+#         develop.run(self)
 
 
 def readme():
@@ -30,7 +23,7 @@ def required():
 
 setup(
     name="notify-send",
-    version="0.0.9",
+    version="0.0.11",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -47,5 +40,5 @@ setup(
         "Programming Language :: Python :: 3",
         "Intended Audience :: Developers",
     ],
-    cmdclass={"develop": PostDevelopCommand},
+    # cmdclass={"develop": PostDevelopCommand},
 )
