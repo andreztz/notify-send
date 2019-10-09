@@ -24,8 +24,8 @@ setup(
     install_requires=[
         "pypiwin32==223; sys_platform == 'win32'",
         "pywin32==224; sys_platform == 'win32'",
-        "pycairo==1.18.1; sys_platform == 'linux'",
-        "PyGObject==3.32.1; sys_platform == 'linux'",
+        "pycairo>=1.18.1; sys_platform == 'linux'",
+        "PyGObject>=3.34.0; sys_platform == 'linux'",
     ],
     classifiers=[
         "Development Status :: 1 - Planning",
