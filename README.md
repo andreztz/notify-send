@@ -11,8 +11,8 @@
 ## Usage example
 
 ```python
-    from notify import Notification
-    Notification('body message', title='optinal')
+    from notify import notification
+    notification('body message', title='optinal')
 ```
 
 ## Development setup
