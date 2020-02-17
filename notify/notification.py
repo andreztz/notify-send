@@ -11,7 +11,7 @@ import sys
 if sys.platform == "linux":
     from .linux import NotificationLinux as notify
 elif sys.platform == "win32":
-    from .win32 import NotificationWindows as notify
+    from .win32 import Notification as notify
 else:
     raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
 
