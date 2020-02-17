@@ -29,7 +29,7 @@ import struct
 import time
 
 
-class NotificationWindows:
+class Notification:
     def __init__(self, message, title):
 
         message_map = {win32con.WM_DESTROY: self.OnDestroy}
@@ -94,7 +94,7 @@ class NotificationWindows:
 
 
 def run_balloon_tip(message, **kwargs):
-    w = NotificationWindows(message, **kwargs)
+    w = Notification(message, **kwargs)
 
 
 if __name__ == "__main__":
