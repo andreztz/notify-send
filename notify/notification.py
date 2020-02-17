@@ -9,18 +9,13 @@ import sys
 
 # imports by Platform
 if sys.platform == "linux":
-    from .linux import NotificationLinux as send
+    from .linux import NotificationLinux as notify
 elif sys.platform == "win32":
-    from .win32 import NotificationWindows as send
+    from .win32 import NotificationWindows as notify
 else:
     raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
 
 
-class Notification:
+def notification(message, title="", app_name=None):
     """ Displays a notification """
-
-    def __call__(self, message, title="", app_name=None):
-        send(message, title, app_name)
-
-
-Notification = Notification()
+    notify(message, title, app_name)
