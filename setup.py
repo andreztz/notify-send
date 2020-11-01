@@ -23,7 +23,7 @@ setup(
     packages=find_packages(),
     install_requires=[
         "pypiwin32==223; sys_platform == 'win32'",
-        "pywin32==224; sys_platform == 'win32'",
+        "pywin32==228; sys_platform == 'win32'",
         "pycairo>=1.18.1; sys_platform == 'linux'",
         "PyGObject>=3.34.0; sys_platform == 'linux'",
     ],
