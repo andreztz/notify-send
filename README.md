@@ -27,7 +27,7 @@
 
 ## Release History
 
--   0.0.12 - The first proper release
+-   0.0.15 - The first proper release
     -   Work in progress
 
 ## Meta
