@@ -30,7 +30,7 @@ import time
 
 
 class Notification:
-    def __init__(self, message, title):
+    def __init__(self, message, title=''):
 
         message_map = {win32con.WM_DESTROY: self.OnDestroy}
         # Register the Window class.
