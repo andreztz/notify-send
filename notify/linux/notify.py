@@ -19,6 +19,7 @@ class LinuxNotification:
     Args:
         app_name: The application name to use for this notification.
         title: The summary text.
+        timeout: Timeout for notification in milliseconds (optional)
         message: The message body text.
         image: The icon filename or icon theme-compliant name
     """
@@ -27,6 +28,7 @@ class LinuxNotification:
         self,
         message,
         title="",
+        timeout=None,
         image="dialog-information",
         app_name=None,
         **kwargs
@@ -35,4 +37,6 @@ class LinuxNotification:
         app_name = app_name or sys.argv[0]
         Notify.init(app_name)
         n = Notify.Notification.new(title, message, image)
+        if timeout is not None:
+            n.set_timeout(timeout)
         n.show()
