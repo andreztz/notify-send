@@ -33,18 +33,20 @@ class Notification:
     Args:
         message: The message body.
         title: The summary text (optional).
+        timeout: notification length in milliseconds (optional).
         **kwargs: Additional arguments (optional).
     """
 
-    def __init__(self, message, title="", **kwargs):
+    def __init__(self, message, title="", timeout=None, **kwargs):
         self.message = message
         self.title = title
+        self.timeout = timeout
         self.kwargs = kwargs
 
     def __call__(self):
-        send(self.message, self.title, **self.kwargs)
+        send(self.message, self.title, self.timeout, **self.kwargs)
 
 
-def notification(message, title="", **kwargs):
-    n = Notification(message, title, **kwargs)
+def notification(message, title="", timeout=None, **kwargs):
+    n = Notification(message, title, timeout, **kwargs)
     n()
