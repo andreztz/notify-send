@@ -2,6 +2,25 @@
 
 ![](header.png)
 
+
+## Prerequisites
+
+
+### Ubuntu
+
+```
+$ sudo apt install libcairo2-dev libgirepository1.0-dev
+```
+
+## Archlinux
+
+
+```
+$ sudo pacman -S gobject-introspection
+```
+
+
+
 ## Installation
 
 ```sh
@@ -25,10 +44,6 @@
     pip install -e .
 ```
 
-## Release History
-
--   0.0.16 - The first proper release
-    -   Work in progress
 
 ## Meta
 
