@@ -34,7 +34,7 @@ class LinuxNotification:
         **kwargs
     ):
 
-        app_name = app_name or sys.argv[0]
+        app_name = app_name or sys.argv[0] or "notify-send"
         Notify.init(app_name)
         n = Notify.Notification.new(title, message, image)
         if timeout is not None:
