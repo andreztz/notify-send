@@ -39,9 +39,7 @@ $ sudo pacman -S gobject-introspection
 ```sh
     git clone https://github.com/andreztz/notify-send.git
     cd notify-send
-    virtualenv venv
-    source venv/bin/activate
-    pip install -e .
+    poetry install
 ```
 
 
