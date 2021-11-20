@@ -11,5 +11,5 @@ def test_notification_function():
 
 
 def test_notification_class():
-    n = Notification("Hello World", title="optional")
-    n()
+    Notification("Hello World", title="optional")()
+    

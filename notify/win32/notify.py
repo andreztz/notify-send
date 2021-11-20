@@ -29,32 +29,33 @@ from win32gui import (
 import win32con
 import sys
 import os
-import struct
-import time
 
 
 class Win32Notification:
     """Displays a notification using the Win32 API.
 
-    Paramters:
+    Args:
 
-    tip (str): Tooltip text (optional)
-    timeout (int): Timeout for ballon tooltip in milliseconds (optional)
-    title (str): Title for ballon tooltip (optional)
-    message (str): Balloon tooltip text (optional)
+        tip (str): Tooltip text (optional)
+        timeout (int): Timeout for ballon tooltip in milliseconds (optional)
+        title (str): Title for ballon tooltip (optional)
+        message (str): Balloon tooltip text (optional)
+        **kwargs: Aditional arguments (optional)
     """
 
-    def __call__(
-        self, message="", title="", tip="Balloon tooltip", timeout=200
-    ):
+    def __init__(self):
+        self.message_map = {win32con.WM_DESTROY: self.OnDestroy}
 
-        message_map = {win32con.WM_DESTROY: self.OnDestroy}
+    def __call__(self, message="", title="", timeout=2000, **kwargs):
+        tip = kwargs.get("tip", "Balloon tooltip")
+
         # Register the Window class.
         wc = WNDCLASS()
         hinst = wc.hInstance = GetModuleHandle(None)
         wc.lpszClassName = "PythonTaskbar"
-        wc.lpfnWndProc = message_map  # could also specify a wndproc.
+        wc.lpfnWndProc = self.message_map  # could also specify a wndproc.
         classAtom = RegisterClass(wc)
+
         # Create the Window.
         style = win32con.WS_OVERLAPPED | win32con.WS_SYSMENU
         self.hwnd = CreateWindow(
@@ -71,10 +72,13 @@ class Win32Notification:
             None,
         )
         UpdateWindow(self.hwnd)
+
+        # Icons managment
         iconPathName = os.path.abspath(
             os.path.join(sys.path[0], "balloontip.ico")
         )
         icon_flags = win32con.LR_LOADFROMFILE | win32con.LR_DEFAULTSIZE
+
         try:
             hicon = LoadImage(
                 hinst, iconPathName, win32con.IMAGE_ICON, 0, 0, icon_flags
@@ -84,6 +88,8 @@ class Win32Notification:
 
         flags = NIF_ICON | NIF_MESSAGE | NIF_TIP
         nid = (self.hwnd, 0, flags, win32con.WM_USER + 20, hicon, "tooltip")
+
+        # Notify
         Shell_NotifyIcon(NIM_ADD, nid)
         Shell_NotifyIcon(
             NIM_MODIFY,
@@ -99,19 +105,11 @@ class Win32Notification:
                 title,
             ),
         )
-        time.sleep(10)
+        # Destroy
         DestroyWindow(self.hwnd)
-        UnregisterClass(classAtom, hinst)
+        classAtom = UnregisterClass(classAtom, hinst)
 
     def OnDestroy(self, hwnd, msg, wparam, lparam):
         nid = (self.hwnd, 0)
         Shell_NotifyIcon(NIM_DELETE, nid)
         PostQuitMessage(0)  # Terminate the app.
-
-
-def run_balloon_tip(message, **kwargs):
-    w = Win32Notification(message, **kwargs)
-
-
-if __name__ == "__main__":
-    run_balloon_tip(message="Here is a balloon tip", title="Demonstration")

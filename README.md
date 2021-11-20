@@ -3,21 +3,7 @@
 ![](header.png)
 
 
-## Prerequisites
 
-
-### Ubuntu
-
-```
-$ sudo apt install libcairo2-dev libgirepository1.0-dev
-```
-
-## Arch Linux
-
-
-```
-$ sudo pacman -S gobject-introspection
-```
 
 
 
@@ -27,6 +13,20 @@ $ sudo pacman -S gobject-introspection
     pip install notify-send
 ```
 
+### Prerequisites
+
+#### Ubuntu
+
+```
+$ sudo apt install libcairo2-dev libgirepository1.0-dev
+```
+#### Arch Linux
+
+```
+$ sudo pacman -S gobject-introspection
+```
+
+
 ## Usage example
 
 ```python
@@ -34,12 +34,15 @@ $ sudo pacman -S gobject-introspection
     notification('body message', title='optinal')
 ```
 
+
 ## Development setup
 
 ```sh
     git clone https://github.com/andreztz/notify-send.git
     cd notify-send
-    poetry install
+    python -m venv venv
+    source venv/bin/activate
+    pip install -e .
 ```
 
 
