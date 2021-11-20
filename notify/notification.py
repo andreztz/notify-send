@@ -19,11 +19,11 @@ platform = sys.platform
 
 
 try:
-    mod = import_module("." + platform, __package__)
+    modulo = import_module("." + platform, __package__)
 except:
     raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
 else:
-    send = getattr(mod, "{}Notification".format(platform.title()))()
+    send = getattr(modulo, "{}Notification".format(platform.title()))()
 
 
 class Notification:
@@ -38,7 +38,7 @@ class Notification:
         **kwargs: Additional arguments (optional).
     """
 
-    def __init__(self, message, title="", timeout=None, **kwargs):
+    def __init__(self, message, title="", timeout=2000, **kwargs):
         self.message = message
         self.title = title
         self.timeout = timeout
@@ -48,6 +48,5 @@ class Notification:
         send(self.message, self.title, self.timeout, **self.kwargs)
 
 
-def notification(message, title="", timeout=None, **kwargs):
-    n = Notification(message, title, timeout, **kwargs)
-    n()
+def notification(message, title="", timeout=2000, **kwargs):
+    Notification(message, title, timeout, **kwargs)()

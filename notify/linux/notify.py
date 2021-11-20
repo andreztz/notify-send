@@ -4,7 +4,6 @@ This module contains the code for the notification using Gtk api.
 https://lazka.github.io/pgi-docs/#Notify-0.7/classes/Notification.html
 https://lazka.github.io/pgi-docs/Notify-0.7/classes/Notification.html#Notify.Notification.set_app_name
 """
-import sys
 import gi
 
 gi.require_version("Notify", "0.7")
@@ -28,15 +27,13 @@ class LinuxNotification:
         self,
         message,
         title="",
-        timeout=None,
-        image="dialog-information",
-        app_name=None,
+        timeout=2000,
         **kwargs
     ):
+        app_name = kwargs.get('app_name', 'notify-send')
+        image = kwargs.get('image', 'dialog-information')
 
-        app_name = app_name or sys.argv[0] or "notify-send"
         Notify.init(app_name)
         n = Notify.Notification.new(title, message, image)
-        if timeout is not None:
-            n.set_timeout(timeout)
+        n.set_timeout(timeout)
         n.show()

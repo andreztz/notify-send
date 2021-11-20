@@ -29,8 +29,6 @@ from win32gui import (
 import win32con
 import sys
 import os
-import struct
-import time
 
 
 class Win32Notification:
@@ -45,16 +43,17 @@ class Win32Notification:
         **kwargs: Aditional arguments (optional)
     """
 
-    def __call__(
-        self, message="", title="", tip="Balloon tooltip", timeout=200
-    ):
-        message_map = {win32con.WM_DESTROY: self.OnDestroy}
+    def __init__(self):
+        self.message_map = {win32con.WM_DESTROY: self.OnDestroy}
+
+    def __call__(self, message="", title="", timeout=2000, **kwargs):
+        tip = kwargs.get("tip", "Balloon tooltip")
 
         # Register the Window class.
         wc = WNDCLASS()
         hinst = wc.hInstance = GetModuleHandle(None)
         wc.lpszClassName = "PythonTaskbar"
-        wc.lpfnWndProc = message_map  # could also specify a wndproc.
+        wc.lpfnWndProc = self.message_map  # could also specify a wndproc.
         classAtom = RegisterClass(wc)
 
         # Create the Window.
@@ -106,19 +105,11 @@ class Win32Notification:
                 title,
             ),
         )
-        time.sleep(10)
+        # Destroy
         DestroyWindow(self.hwnd)
-        UnregisterClass(classAtom, hinst)
+        classAtom = UnregisterClass(classAtom, hinst)
 
     def OnDestroy(self, hwnd, msg, wparam, lparam):
         nid = (self.hwnd, 0)
         Shell_NotifyIcon(NIM_DELETE, nid)
         PostQuitMessage(0)  # Terminate the app.
-
-
-def run_balloon_tip(message, **kwargs):
-    w = Win32Notification(message, **kwargs)
-
-
-if __name__ == "__main__":
-    run_balloon_tip(message="Here is a balloon tip", title="Demonstration")
