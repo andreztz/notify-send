@@ -1,6 +1,7 @@
 """
 Displays a notification suitable for the platform being run on.
 
+
 Examples:
     ```
     from notify import notification
@@ -10,7 +11,6 @@ Examples:
 License:
 
     `MIT, see LICENSE for more details.`
-
 """
 import sys
 from importlib import import_module
@@ -31,9 +31,10 @@ class Notification:
     Displays a notification.
 
     Args:
-        message: The message body.
-        title: The summary text (optional).
-        timeout: notification length in milliseconds (optional).
+        message: The text message body.
+        app_name: Caller app name. Defaults to 'notify-send'
+        title: Summary text (optional).
+        timeout: Notification length in milliseconds (optional).
         **kwargs: Additional arguments (optional).
     """
 
