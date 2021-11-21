@@ -19,17 +19,22 @@ setup(
     author_email="andreztz@gmail.com",
     license="MIT",
     packages=find_packages(),
+    python_requires=">=3.6",
     install_requires=[
         "pypiwin32==223; sys_platform == 'win32'",
         "pywin32==302; sys_platform == 'win32'",
         "pycairo>=1.18.1; sys_platform == 'linux'",
         "PyGObject>=3.34.0; sys_platform == 'linux'",
     ],
+    extras_require={
+        "dev": [
+            "pytest",
+        ]
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "Intended Audience :: Developers",
     ],
-    python_requires=">=3.6",
     project_urls={
         "Source": "https://github.com/andreztz/notify-send/",
         "Documentation": "https://andreztz.github.io/notify-send/",
