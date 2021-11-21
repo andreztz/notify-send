@@ -2,6 +2,12 @@
 
 Displays a notification suitable for the platform being run on.
 
+## Example
+
+```python
+from notify import notification
+notification('summary text', message='message body', app_name='myapp')
+```
 
 ## Installation
 
@@ -9,12 +15,20 @@ Displays a notification suitable for the platform being run on.
 $ pip install notify-send
 ```
 
-## Example
+### Prerequisites
 
-```python
-from notify import notification
-notification('what you want said', title=':)')
+#### Ubunut
+
 ```
+$ sudo apt install libcairo2-dev libgirepository1.0-dev
+```
+
+#### Arch Linux
+
+```
+$ sudo pacman -S gobject-introspection
+```
+
 
 * [Notification](api.md#notification)
 * [Notification Linux](api.md#linux)

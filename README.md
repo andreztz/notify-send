@@ -3,10 +3,6 @@
 ![](header.png)
 
 
-
-
-
-
 ## Installation
 
 ```sh
@@ -17,13 +13,13 @@
 
 #### Ubuntu
 
-```
-$ sudo apt install libcairo2-dev libgirepository1.0-dev
+```sh
+sudo apt install libcairo2-dev libgirepository1.0-dev
 ```
 #### Arch Linux
 
-```
-$ sudo pacman -S gobject-introspection
+```sh
+sudo pacman -S gobject-introspection
 ```
 
 
@@ -31,7 +27,7 @@ $ sudo pacman -S gobject-introspection
 
 ```python
     from notify import notification
-    notification('body message', title='optinal')
+    notification('summary text', message='message body', app_name='myapp')
 ```
 
 
@@ -42,7 +38,7 @@ $ sudo pacman -S gobject-introspection
     cd notify-send
     python -m venv venv
     source venv/bin/activate
-    pip install -e .
+    pip install -e .[dev]
 ```
 
 
