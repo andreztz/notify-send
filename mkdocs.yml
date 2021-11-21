@@ -1,8 +1,9 @@
 site_name: Notify-Send
 
 theme:
-  name: "material"
+  name: material
 
 plugins:
   - search
   - mkdocstrings
+
