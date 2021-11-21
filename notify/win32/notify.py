@@ -32,14 +32,15 @@ import os
 
 
 class Win32Notification:
-    """Displays a notification using the Win32 API.
+    """Displays a notification using Win32 API.
 
-    Args:
+    Paramters:
 
+        summary (str): Summary text.
+        message (str): The message body (optional).
+        timeout (int): Timeout for ballon tooltip in milliseconds (optional).
+        app_name (str): Caller app name. Defaults to 'notify-send'.
         tip (str): Tooltip text (optional)
-        timeout (int): Timeout for ballon tooltip in milliseconds (optional)
-        title (str): Title for ballon tooltip (optional)
-        message (str): Balloon tooltip text (optional)
         **kwargs: Aditional arguments (optional)
     """
 

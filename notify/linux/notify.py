@@ -16,11 +16,11 @@ class LinuxNotification:
     """Displays a notification using the Gtk API.
 
     Args:
-        app_name: Caller app name.
-        title: The summary text.
-        timeout: Timeout for notification in milliseconds (optional)
-        message: The text message body.
-        image: The icon filename or icon theme-compliant name
+        summary (str): The summary text.
+        message (str): The message body.
+        timeout (int): The timeout in milliseconds (optional)
+        app_name (str): Caller app name.
+        image (str): The icon filename or icon theme-compliant name
     """
 
     def __call__(self, summary, message="", timeout=2000, **kwargs):

@@ -31,10 +31,10 @@ class Notification:
     Displays a notification.
 
     Args:
-        message: The text message body.
-        app_name: Caller app name. Defaults to 'notify-send'
-        title: Summary text (optional).
-        timeout: Notification length in milliseconds (optional).
+        summary (str): Summary text.
+        message (str): The message body (optional).
+        timeout (int): Notification length in milliseconds (optional).
+        app_name (str): Caller app name. Defaults to 'notify-send'.
         **kwargs: Additional arguments (optional).
     """
 
