@@ -23,17 +23,12 @@ class LinuxNotification:
         image: The icon filename or icon theme-compliant name
     """
 
-    def __call__(
-        self,
-        message,
-        title="",
-        timeout=2000,
-        **kwargs
-    ):
-        app_name = kwargs.get('app_name', 'notify-send')
-        image = kwargs.get('image', 'dialog-information')
-
+    def __call__(self, summary, message="", timeout=2000, **kwargs):
+        app_name = kwargs.get("app_name", "notify-send")
+        image = kwargs.get("image", "dialog-information")
         Notify.init(app_name)
-        n = Notify.Notification.new(title, message, image)
+        n = Notify.Notification.new(message, summary, image)
         n.set_timeout(timeout)
         n.show()
+        return n.close()
+

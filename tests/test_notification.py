@@ -7,9 +7,10 @@ def test_if_notification_is_callable():
 
 
 def test_notification_function():
-    notification("hello world", title="optinal")
+    status = notification("hello world", message="optinal")
+    assert status is True
 
 
 def test_notification_class():
-    Notification("Hello World", title="optional")()
-    
+    status = Notification("Hello World", message="optional")()
+    assert status is True
