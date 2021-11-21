@@ -46,7 +46,7 @@ class Win32Notification:
     def __init__(self):
         self.message_map = {win32con.WM_DESTROY: self.OnDestroy}
 
-    def __call__(self, message="", title="", timeout=2000, **kwargs):
+    def __call__(self, summary, message="", timeout=2000, **kwargs):
         tip = kwargs.get("tip", "Balloon tooltip")
 
         # Register the Window class.
@@ -83,7 +83,7 @@ class Win32Notification:
             hicon = LoadImage(
                 hinst, iconPathName, win32con.IMAGE_ICON, 0, 0, icon_flags
             )
-        except:
+        except Exception:
             hicon = LoadIcon(0, win32con.IDI_APPLICATION)
 
         flags = NIF_ICON | NIF_MESSAGE | NIF_TIP
@@ -102,12 +102,13 @@ class Win32Notification:
                 tip,
                 message,
                 timeout,
-                title,
+                summary,
             ),
         )
         # Destroy
         DestroyWindow(self.hwnd)
         classAtom = UnregisterClass(classAtom, hinst)
+        return True
 
     def OnDestroy(self, hwnd, msg, wparam, lparam):
         nid = (self.hwnd, 0)
