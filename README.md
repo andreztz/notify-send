@@ -4,6 +4,7 @@
 
 ## Usage example
 
+
 ```python
     from notify import notification
     notification('summary text', message='message body', app_name='myapp')
@@ -27,6 +28,7 @@ sudo apt install libcairo2-dev libgirepository1.0-dev
 
 ```sh
 sudo pacman -S gobject-introspection
+
 ```
 
 
