@@ -5,7 +5,7 @@ Displays a notification suitable for the platform being run on.
 Examples:
     ```
     from notify import notification
-    notification('what you want said', title=':)')
+    notification('summary text', message='message body', app_name='myapp')
     ```
 
 License:
@@ -21,7 +21,7 @@ platform = sys.platform
 try:
     modulo = import_module("." + platform, __package__)
 except Exception:
-    raise RuntimeError("Unsupported operating system: {}".format(sys.platform))
+    raise RuntimeError("Unsupported operating system: {}".format(platform))
 else:
     caller = getattr(modulo, "{}Notification".format(platform.title()))()
 
