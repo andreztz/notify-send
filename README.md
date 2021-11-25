@@ -2,7 +2,7 @@
 
 ![](header.png)
 
-[![Upload Python Package](https://github.com/andreztz/notify-send/actions/workflows/python-publish.yml/badge.svg)](https://github.com/andreztz/notify-send/actions/workflows/python-publish.yml)
+[![PyPI](https://github.com/andreztz/notify-send/actions/workflows/python-publish.yml/badge.svg)](https://github.com/andreztz/notify-send/actions/workflows/python-publish.yml)
 
 ## Usage example
 
