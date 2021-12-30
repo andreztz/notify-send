@@ -29,6 +29,6 @@ class LinuxNotification:
         Notify.init(app_name)
         n = Notify.Notification.new(message, summary, image)
         n.set_timeout(timeout)
-        n.show()
-        return n.close()
+        success = n.show()
+        return success
 
