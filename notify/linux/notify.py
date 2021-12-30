@@ -31,4 +31,3 @@ class LinuxNotification:
         n.set_timeout(timeout)
         success = n.show()
         return success
-
