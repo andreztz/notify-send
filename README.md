@@ -16,7 +16,7 @@
 ## Installation
 
 ```sh
-    pip install notify-send
+    pip install -U notify-send
 ```
 
 ### Prerequisites
