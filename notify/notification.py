@@ -35,7 +35,7 @@ class Notification:
         message (str): The message body (optional).
         timeout (int): Notification length in milliseconds (optional).
         app_name (str): Caller app name. Defaults to 'notify-send'.
-        **kwargs: Additional arguments (optional).
+        kwargs: Additional arguments (optional).
     """
 
     def __init__(self, summary, message="", timeout=2000, **kwargs):
