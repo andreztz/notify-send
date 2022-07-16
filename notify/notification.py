@@ -20,8 +20,10 @@ platform = sys.platform
 
 try:
     modulo = import_module("." + platform, __package__)
-except Exception:
+except ModuleNotFoundError as exc:
     raise RuntimeError("Unsupported operating system: {}".format(platform))
+except Exception:
+    raise
 else:
     caller = getattr(modulo, "{}Notification".format(platform.title()))()
 
