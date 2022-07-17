@@ -3,10 +3,11 @@ This module contains the code for the notification using Gtk api.
 
 https://lazka.github.io/pgi-docs/#Notify-0.7/classes/Notification.html
 https://lazka.github.io/pgi-docs/Notify-0.7/classes/Notification.html#Notify.Notification.set_app_name
+https://gitlab.gnome.org/GNOME/libnotify
 """
 import gi
 
-gi.require_version("Notify", "0.7")
+gi.require_version("Notify", "0.8")
 
 from gi.repository import Notify
 from gi.repository import GdkPixbuf
