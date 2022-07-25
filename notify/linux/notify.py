@@ -7,7 +7,7 @@ https://gitlab.gnome.org/GNOME/libnotify
 """
 import gi
 
-gi.require_version("Notify", "0.8")
+gi.require_version("Notify", "0.7")
 
 from gi.repository import Notify
 from gi.repository import GdkPixbuf
