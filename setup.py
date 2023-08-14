@@ -9,7 +9,7 @@ def readme():
 
 setup(
     name="notify-send",
-    version="1.1.0",
+    version="1.1.1",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
