@@ -18,7 +18,7 @@ setup(
     author="Andre P. Santos",
     author_email="andreztz@gmail.com",
     license="MIT",
-    packages=find_packages(),
+    packages=find_packages(exclude=["test*"]),
     python_requires=">=3.6",
     install_requires=[
         "pypiwin32==223; sys_platform == 'win32'",
