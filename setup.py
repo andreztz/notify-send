@@ -9,7 +9,7 @@ def readme():
 
 setup(
     name="notify-send",
-    version="1.1.0",
+    version="1.1.1",
     description="notify-send notify.",
     long_description=readme(),
     long_description_content_type="text/markdown",
@@ -18,7 +18,7 @@ setup(
     author="Andre P. Santos",
     author_email="andreztz@gmail.com",
     license="MIT",
-    packages=find_packages(),
+    packages=find_packages(exclude=["test*"]),
     python_requires=">=3.6",
     install_requires=[
         "pypiwin32==223; sys_platform == 'win32'",
